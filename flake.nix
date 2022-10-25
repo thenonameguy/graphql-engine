@@ -25,9 +25,11 @@
                 };
                 evalSystem = "x86_64-linux";
 
+                # taking notes from https://raw.githubusercontent.com/NixOS/nixpkgs/nixos-unstable/pkgs/development/haskell-modules/hackage-packages.nix
                 modules = [
                   {
                     packages.mysql.components.library.libs = pkgs.lib.mkForce [ pkgs.libmysqlclient.dev ];
+                    packages.mysql-simple.components.library.libs = [pkgs.openssl pkgs.zlib];
                   }
                 ];
               };
