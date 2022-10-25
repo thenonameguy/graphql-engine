@@ -41,8 +41,7 @@
         ];
       in
       flake // {
-        legacyPackages = pkgs;
-        packages.default = flake.packages."hello:exe:hello";
+        packages.default = flake.packages."graphql-engine:exe:graphql-engine";
       });
 
   # --- Flake Local Nix Configuration ----------------------------
