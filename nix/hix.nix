@@ -2,8 +2,6 @@
   name = "graphql-engine";
   compiler-nix-name = "ghc8107"; # Version of GHC to use
 
-  packages.mysql-lib.components.library.libs = pkgs.lib.mkForce [pkgs.libmysqlclient.dev pkgs.mysql 42];
-
   # Cross compilation support:
   # crossPlatforms = p: pkgs.lib.optionals pkgs.stdenv.hostPlatform.isx86_64 ([
   #   p.mingwW64
