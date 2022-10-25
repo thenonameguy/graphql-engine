@@ -1,6 +1,8 @@
 {pkgs, ...}: {
-  # name = "project-name";
+  name = "graphql-engine";
   compiler-nix-name = "ghc8107"; # Version of GHC to use
+
+  packages.mysql-lib.components.library.libs = pkgs.lib.mkForce [pkgs.libmysqlclient.dev pkgs.mysql 42];
 
   # Cross compilation support:
   # crossPlatforms = p: pkgs.lib.optionals pkgs.stdenv.hostPlatform.isx86_64 ([
@@ -12,6 +14,7 @@
 
   # Tools to include in the development shell
   shell.tools.cabal = "latest";
-  # shell.tools.hlint = "latest";
-  # shell.tools.haskell-language-server = "latest";
+  shell.tools.hlint = "latest";
+  shell.tools.haskell-language-server = "latest";
+
 }
