@@ -9,7 +9,7 @@ author:
   - Anon Ray <anon@hasura.io>
   - Bryan O'Sullivan <bos@serpentine.com>
   - MailRank, Inc.
-license: BSD3
+license: BSD-3-Clause
 github: hasura/github-engine-mono
 
 extra-source-files:
