@@ -30,6 +30,8 @@
                   {
                     packages.mysql.components.library.libs = pkgs.lib.mkForce [ pkgs.libmysqlclient.dev ];
                     packages.mysql-simple.components.library.libs = [pkgs.openssl pkgs.zlib];
+                    # TODO: add pg_dump to PATH
+                    packages.graphql-engine.components.library.libs = [pkgs.openssl pkgs.zlib];
                   }
                 ];
               };
