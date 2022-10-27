@@ -24,6 +24,7 @@
                   name = "graphql-engine-src";
                 };
                 evalSystem = "x86_64-linux";
+                index-state = "2022-10-25T00:00:00Z";
 
                 # taking notes from https://raw.githubusercontent.com/NixOS/nixpkgs/nixos-unstable/pkgs/development/haskell-modules/hackage-packages.nix
                 modules = [
