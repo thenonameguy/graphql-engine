@@ -18,6 +18,7 @@ extra-source-files:
   -- file. See: https://github.com/haskell/cabal/issues/4746
   --
   -- This file is intentionally .gitignore'd
+  -- FORK: not anymore :), to make the nix build reproducible
   CURRENT_VERSION
   -- These are files referenced by functions from 'file-embed' which uses
   -- addDependentFile internally and has the same issue as above:
@@ -25,6 +26,36 @@ extra-source-files:
   src-rsr/mssql_table_metadata.sql
   src-rsr/catalog_versions.txt
   src-rsr/catalog_version.txt
+
+  -- FORK: missing source files, needed for Nix build
+  -- fetched via: /server $ rg -I -o -r '$1'  'makeRelativeToProject "(.*)"' src-lib src-rsr | sort -u
+  CURRENT_VERSION
+  src-rsr/catalog_versions.txt
+  src-rsr/catalog_version.txt
+  src-rsr/citus_table_metadata.sql
+  src-rsr/clear_system_metadata.sql
+  src-rsr/cockroach_table_metadata.sql
+  src-rsr/console.html
+  src-rsr/drop_pg_source.sql
+  src-rsr/initialise.sql
+  src-rsr/init_pg_source.sql
+  src-rsr/introspection.json
+  src-rsr/migrations/42_to_43.sql
+  src-rsr/migrations/43_to_42.sql
+  src-rsr/mssql/drop_mssql_source.sql
+  src-rsr/mssql/event_logs_cleanup_sqls/mssql_update_events_to_dead.sql.shakespeare
+  src-rsr/mssql/init_mssql_source.sql
+  src-rsr/mssql/mssql_delete_trigger.sql.shakespeare
+  src-rsr/mssql/mssql_fetch_events.sql.shakespeare
+  src-rsr/mssql/mssql_insert_trigger.sql.shakespeare
+  src-rsr/mssql/mssql_table_metadata.sql
+  src-rsr/mssql/mssql_unlock_events.sql.shakespeare
+  src-rsr/mssql/mssql_update_trigger.sql.shakespeare
+  src-rsr/mysql_table_metadata.sql
+  src-rsr/pg_function_metadata.sql
+  src-rsr/pg_table_metadata.sql
+  src-rsr/trigger.sql.shakespeare
+
   -- Test data used by Data Connector agent tests
   src/tests-dc-api/Test/Data/ChinookData.xml.gz
   src/tests-dc-api/Test/Data/schema-tables.json
