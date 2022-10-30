@@ -6,10 +6,9 @@
   outputs = { self, nixpkgs, flake-utils, haskellNix }:
     let
       supportedSystems = [
-#        "x86_64-linux"
-#        "x86_64-darwin"
-#        "aarch64-linux"
         "aarch64-darwin"
+        "x86_64-linux"
+        "aarch64-linux"
       ];
     in
     flake-utils.lib.eachSystem supportedSystems (system:
@@ -44,7 +43,7 @@
         ];
       in
       flake // {
-        packages.default = flake.packages."graphql-engine:exe:graphql-engine";
+        packages.default = flake.packages."$system"."graphql-engine:exe:graphql-engine";
       });
 
   # --- Flake Local Nix Configuration ----------------------------
