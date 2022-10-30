@@ -1,14 +1,14 @@
 {
   # This is a template created by `hix init`
-  inputs.haskellNix.url = "github:thenonameguy/haskell.nix/no-ubxt-patch";
+  inputs.haskellNix.url = "github:input-output-hk/haskell.nix";
   inputs.nixpkgs.follows = "haskellNix/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
   outputs = { self, nixpkgs, flake-utils, haskellNix }:
     let
       supportedSystems = [
-        "x86_64-linux"
-        "x86_64-darwin"
-        "aarch64-linux"
+#        "x86_64-linux"
+#        "x86_64-darwin"
+#        "aarch64-linux"
         "aarch64-darwin"
       ];
     in
@@ -20,7 +20,8 @@
             graphql-engine =
               final.haskell-nix.hix.project {
                 src = ./.;
-                evalSystem = "x86_64-linux";
+		compiler-nix-name = "ghc924";
+                evalSystem = system;
                 index-state = "2022-10-25T00:00:00Z";
 
                 # taking notes from https://raw.githubusercontent.com/NixOS/nixpkgs/nixos-unstable/pkgs/development/haskell-modules/hackage-packages.nix
@@ -51,8 +52,8 @@
     # This sets the flake to use the IOG nix cache.
     # Nix should ask for permission before using it,
     # but remove it here if you do not want it to.
-    extra-substituters = [ "https://cache.iog.io" ];
-    extra-trusted-public-keys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
+    extra-substituters = [ "https://cache.iog.io" "https://cache.zw3rk.com" ];
+    extra-trusted-public-keys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" "loony-tools:pr9m4BkM/5/eSTZlkQyRt57Jz7OMBxNSUiMC4FkcNfk=" ];
     allow-import-from-derivation = "true";
   };
 }
